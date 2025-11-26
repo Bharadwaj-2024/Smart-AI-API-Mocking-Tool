@@ -4,9 +4,9 @@ import { apiStore } from '@/lib/storage/apiStore';
 // GET /api/mock/[apiId]/[...path]
 export async function GET(
     request: NextRequest,
-    { params }: { params: { apiId: string; path: string[] } }
+    { params }: { params: Promise<{ apiId: string; path: string[] }> }
 ) {
-    const { apiId, path } = params;
+    const { apiId, path } = await params;
 
     // Check if API exists
     const api = apiStore.getAPI(apiId);
@@ -63,9 +63,9 @@ export async function GET(
 // POST /api/mock/[apiId]/[...path]
 export async function POST(
     request: NextRequest,
-    { params }: { params: { apiId: string; path: string[] } }
+    { params }: { params: Promise<{ apiId: string; path: string[] }> }
 ) {
-    const { apiId, path } = params;
+    const { apiId, path } = await params;
 
     const api = apiStore.getAPI(apiId);
     if (!api) {
@@ -100,9 +100,9 @@ export async function POST(
 // PUT /api/mock/[apiId]/[...path]
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { apiId: string; path: string[] } }
+    { params }: { params: Promise<{ apiId: string; path: string[] }> }
 ) {
-    const { apiId, path } = params;
+    const { apiId, path } = await params;
 
     const api = apiStore.getAPI(apiId);
     if (!api) {
@@ -138,9 +138,9 @@ export async function PUT(
 // DELETE /api/mock/[apiId]/[...path]
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { apiId: string; path: string[] } }
+    { params }: { params: Promise<{ apiId: string; path: string[] }> }
 ) {
-    const { apiId, path } = params;
+    const { apiId, path } = await params;
 
     const api = apiStore.getAPI(apiId);
     if (!api) {

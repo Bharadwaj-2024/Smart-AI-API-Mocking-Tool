@@ -112,5 +112,14 @@ class APIStore {
     }
 }
 
-// Singleton instance
-export const apiStore = new APIStore();
+// Singleton instance with global caching for development mode
+// This prevents the store from being reset on hot module replacement
+const globalForApiStore = globalThis as unknown as {
+    apiStore: APIStore | undefined;
+};
+
+export const apiStore = globalForApiStore.apiStore ?? new APIStore();
+
+if (process.env.NODE_ENV !== 'production') {
+    globalForApiStore.apiStore = apiStore;
+}
