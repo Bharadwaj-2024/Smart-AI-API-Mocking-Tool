@@ -58,18 +58,18 @@ export default function Dashboard({ apiId, apiName, description, baseUrl, endpoi
     return (
         <div className="space-y-6 animate-fade-in">
             {/* Header */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 transition-all duration-200 border-cyan-500/30">
+            <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-cyan-500/40 rounded-2xl p-6 transition-all duration-200 shadow-xl shadow-cyan-500/10">
                 <div className="flex items-start justify-between">
                     <div>
-                        <h2 className="text-2xl font-bold gradient-text">{apiName}</h2>
+                        <h2 className="text-3xl font-bold gradient-text">{apiName}</h2>
                         <p className="text-gray-400 mt-1">{description}</p>
                         <div className="mt-4 flex items-center gap-2">
-                            <code className="text-sm text-cyan-400 bg-gray-800 px-3 py-1 rounded">
+                            <code className="text-sm text-cyan-300 bg-gray-800/80 px-4 py-2 rounded-lg border border-cyan-500/30">
                                 {baseUrl}
                             </code>
                             <button
                                 onClick={() => copyToClipboard(baseUrl, 'base')}
-                                className="px-4 py-2 rounded-lg font-medium transition-all duration-200 bg-gray-700 hover:bg-gray-600 text-gray-100 text-sm py-1"
+                                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5"
                             >
                                 {copiedUrl === 'base' ? '✓ Copied!' : 'Copy'}
                             </button>
@@ -83,11 +83,13 @@ export default function Dashboard({ apiId, apiName, description, baseUrl, endpoi
             </div>
 
             {/* Resources Summary */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 transition-all duration-200">
-                <h3 className="font-semibold text-gray-200 mb-3">Resources</h3>
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-purple-500/30 rounded-xl p-5 transition-all duration-200">
+                <h3 className="font-bold text-lg text-gray-200 mb-4 flex items-center gap-2">
+                    <span className="text-purple-400">📦</span> Resources
+                </h3>
                 <div className="flex flex-wrap gap-2">
                     {resources.map((resource) => (
-                        <span key={resource} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                        <span key={resource} className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 border-2 border-purple-500/30 hover:border-purple-400/50 transition-all">
                             {resource}
                         </span>
                     ))}
@@ -96,12 +98,12 @@ export default function Dashboard({ apiId, apiName, description, baseUrl, endpoi
 
             {/* Endpoints */}
             <div>
-                <h3 className="text-xl font-semibold text-gray-200 mb-4">
-                    Endpoints ({endpoints.length})
+                <h3 className="text-2xl font-bold text-gray-100 mb-5 flex items-center gap-2">
+                    <span className="text-cyan-400">🚀</span> Endpoints ({endpoints.length})
                 </h3>
                 <div className="space-y-3">
                     {endpoints.map((endpoint, index) => (
-                        <div key={index} className="bg-gray-900 border border-gray-800 rounded-lg p-4 transition-all duration-200 hover:border-gray-600">
+                        <div key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-xl p-5 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10 hover-lift">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">

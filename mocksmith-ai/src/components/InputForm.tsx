@@ -46,21 +46,21 @@ export default function InputForm({ onGenerate, loading }: InputFormProps) {
     };
 
     return (
-        <div className="space-y-6 animate-fade-in">
+        <div className="space-y-8 animate-slide-up">
             <div>
-                <h2 className="text-xl font-semibold mb-3 text-gray-200">Quick Templates</h2>
+                <h2 className="text-2xl font-bold mb-4 gradient-text">⚡ Quick Start Templates</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {templates.map((template) => (
                         <button
                             key={template.name}
                             onClick={() => handleTemplateClick(template)}
                             disabled={loading}
-                            className="bg-gray-900 border border-gray-800 rounded-lg p-4 transition-all duration-200 text-left hover:border-cyan-500 group disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-xl p-5 transition-all duration-300 text-left hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 hover-lift group disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                         >
                             <div className="flex items-start gap-3">
                                 <span className="text-3xl">{template.icon}</span>
                                 <div>
-                                    <h3 className="font-semibold text-gray-100 group-hover:text-cyan-400 transition-colors">
+                                    <h3 className="font-bold text-lg text-gray-100 group-hover:text-cyan-400 transition-colors">
                                         {template.name}
                                     </h3>
                                     <p className="text-sm text-gray-400 mt-1">{template.description}</p>
@@ -73,7 +73,7 @@ export default function InputForm({ onGenerate, loading }: InputFormProps) {
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label htmlFor="description" className="block text-base font-semibold text-gray-200 mb-3">
                         Describe Your API
                     </label>
                     <textarea
@@ -81,7 +81,7 @@ export default function InputForm({ onGenerate, loading }: InputFormProps) {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="Example: social media API with users, posts, likes, and comments"
-                        className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none w-full h-32"
+                        className="bg-gray-900/50 border-2 border-gray-700 rounded-xl px-5 py-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all resize-none w-full h-36 backdrop-blur-sm"
                         disabled={loading}
                     />
                     <p className="text-sm text-gray-500 mt-2">
@@ -92,7 +92,7 @@ export default function InputForm({ onGenerate, loading }: InputFormProps) {
                 <button
                     type="submit"
                     disabled={loading || !description.trim()}
-                    className="px-4 py-2 rounded-lg font-medium transition-all duration-200 bg-cyan-500 hover:bg-cyan-600 text-gray-900 w-full md:w-auto px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="relative px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-gray-900 w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 hover:-translate-y-1"
                 >
                     {loading ? (
                         <>
